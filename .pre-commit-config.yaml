@@ -8,3 +8,4 @@ repos:
     rev: v2.3.0  # Use the ref you want to point at
     hooks:
     -   id: trailing-whitespace
+    -   id: check-ast
