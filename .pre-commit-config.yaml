@@ -9,3 +9,4 @@ repos:
     hooks:
     -   id: trailing-whitespace
     -   id: check-ast
+    -   id: check-merge-conflict
