@@ -21,7 +21,6 @@ from typing import List
 
 if six.PY3:  # case using python 3
     from enum import Enum
-
 elif six.PY2:  # case using python 2
     from aenum import Enum
 
@@ -167,7 +166,6 @@ class ArtemisTestFixture(CommonTestFixture):
             _response, _, _ = utils.request("coverage/{cov}/status".format(cov=cov))
             return _response.get("status", {}).get("last_load_at", "")
 
-<<<<<<< HEAD
         @retry(
             stop_max_delay=data_set.reload_timeout.total_seconds() * 1000,
             wait_fixed=data_set.fixed_wait.total_seconds() * 1000,
@@ -217,10 +215,6 @@ class ArtemisTestFixture(CommonTestFixture):
             wait_fixed=data_set.fixed_wait.total_seconds() * 1000,
             retry_on_exception=utils.is_retry_exception,
         )
-=======
-        # wait 5 min at most
-        @retry(stop_max_delay=300000, wait_fixed=500)
->>>>>>> Pre-commit black passed
         def wait_for_kraken_reload(last_data_loaded, cov):
             new_data_loaded = get_last_coverage_loaded_time(cov)
 
@@ -277,7 +271,6 @@ class ArtemisTestFixture(CommonTestFixture):
                     return True
             else:
                 logger.warning("{} path does not exist : {}".format(data_type, path))
-<<<<<<< HEAD
 
             return False
 
@@ -300,22 +293,6 @@ class ArtemisTestFixture(CommonTestFixture):
 
         for dataset_type in dataset_types_to_process:
             wait_for_data_processing(dataset_type, current_utc_datetime)
-=======
-
-        # put the fusio data
-        put_data("fusio", ".txt", zipped=True)
-        # put the osm data
-        put_data("osm", ".pbf", zipped=False)
-
-        # put the poi data
-        put_data("poi", ".txt", zipped=True)
-        put_data("fusio-poi", ".txt", zipped=True)
-
-        # put the geopal data
-        put_data("geopal", ".txt", zipped=True)
-        put_data("fusio-geopal", ".txt", zipped=True)
-        put_data("fusio-address", ".txt", zipped=True)
->>>>>>> Pre-commit black passed
 
         # Wait until data is reloaded
         wait_for_kraken_reload(last_reload_time, data_set.name)
@@ -345,36 +322,8 @@ class ArtemisTestFixture(CommonTestFixture):
         """
         pass
 
-<<<<<<< HEAD
     def request_compare(self, http_query, checker):
         self.nb_call_to_request_compare += 1
-=======
-    @retry(stop_max_delay=25000, wait_fixed=500)
-    def get_last_rt_loaded_time(self, cov):
-        _res, _, status_code = utils.request("coverage/{cov}/status".format(cov=cov))
-
-        if status_code == 503:
-            raise Exception("Navitia is not available")
-
-        return _res.get("status", {}).get("last_rt_data_loaded", object())
-
-    @retry(stop_max_delay=60000, wait_fixed=500)
-    def wait_for_rt_reload(self, last_rt_data_loaded, cov):
-        logging.warning(
-            "waiting for rt reload later than {}".format(last_rt_data_loaded)
-        )
-        rt_data_loaded = self.get_last_rt_loaded_time(cov)
-
-        if last_rt_data_loaded == rt_data_loaded:
-            raise Exception("real time data not loaded")
-        logger.info("RT data reloaded at {}".format(rt_data_loaded))
-
-    def request_compare(self, url):
-        # creating the url
-        self.query = (
-            config["URL_JORMUN"] + "/v1/coverage/" + str(self.data_sets[0]) + "/" + url
-        )
->>>>>>> Pre-commit black passed
 
         # Get the json answer of the request (it is just a string here)
         http_response = requests.get(http_query)
@@ -404,14 +353,10 @@ class ArtemisTestFixture(CommonTestFixture):
 
         the query is written in a file
         """
-<<<<<<< HEAD
         http_query = "{base_query}/v1{url}".format(
             base_query=config["URL_JORMUN"], url=url
         )
         self.request_compare(http_query, response_checker)
-=======
-        self.request_compare(url)
->>>>>>> Pre-commit black passed
 
     def journey(
         self,
@@ -467,7 +412,6 @@ class ArtemisTestFixture(CommonTestFixture):
             query=query, scenario=overridden_scenario
         )
 
-<<<<<<< HEAD
         # Add current_datetime for disruptions
         query = "{query}&_current_datetime={d}".format(query=query, d=datetime)
 
@@ -514,31 +458,18 @@ class ArtemisTestFixture(CommonTestFixture):
         http_query,
         response_string,
         response_checker=default_checker.default_journey_checker,
-=======
-        # launching request dans comparing
-        self.request_compare("journeys?" + query)
-
-    def create_reference(
-        self, response_checker=default_checker.default_journey_checker
->>>>>>> Pre-commit black passed
     ):
         """
         Create the reference file of a test using the response received.
         The file will be created in the git references folder provided in the settings file
         """
         # Check that the file doesn't already exist
-<<<<<<< HEAD
         filepath = self.get_reference_file_path()
-=======
-        filename = self.get_file_name()
-        filepath = os.path.join(config["REFERENCE_FILE_PATH"], filename)
->>>>>>> Pre-commit black passed
 
         if os.path.isfile(filepath):
             logger.warning(
                 "NO REF FILE CREATED - {} is already present".format(filepath)
             )
-<<<<<<< HEAD
             assert False
         else:
             self.write_full_response_to_file(
@@ -547,48 +478,13 @@ class ArtemisTestFixture(CommonTestFixture):
             logger.info("Created reference file : {}".format(filepath))
 
     def compare_with_ref(self, http_query, response_string, response_checker):
-=======
-        else:
-            # Concatenate reference file info
-            reference_text = OrderedDict()
-            reference_text["query"] = self.query.replace(
-                config["URL_JORMUN"][7:], "localhost"
-            )
-            logger.warning("Query: {}".format(self.query))
-            reference_text["response"] = response_checker.filter(
-                json.loads(self.full_resp)
-            )
-            reference_text["full_response"] = json.loads(
-                self.full_resp.replace(config["URL_JORMUN"][7:], "localhost")
-            )
-
-            # Write reference file directly in the references folder
-            with open(filepath, "w") as ref:
-                ref.write(json.dumps(reference_text, indent=4))
-            logger.info("Created reference file : {}".format(filepath))
-
-    def compare_with_ref(
-        self, response, response_checker=default_checker.default_journey_checker
-    ):
->>>>>>> Pre-commit black passed
         """
         Compare the response (which is a dictionary) to the reference
         First, the function retrieves the reference then filters both ref and resp
         Finally, it compares them
         """
 
-<<<<<<< HEAD
         def print_diff(ref_file, resp_file, test_name):
-=======
-        def ref_resp2files(output_file, output_json):
-            """
-            Create a file for the filtered response and for the filtered reference
-            """
-            with open(output_file, "w") as reference_text:
-                reference_text.write(output_json)
-
-        def print_diff(ref_file, resp_file):
->>>>>>> Pre-commit black passed
             """
             Print differences between reference and response in console
             """
@@ -600,11 +496,7 @@ class ArtemisTestFixture(CommonTestFixture):
                 response = response_text.readlines()
 
             # Print failed test name
-<<<<<<< HEAD
             print_color("\n\n" + str(test_name) + " failed :" + "\n\n", Colors.PINK)
-=======
-            print_color("\n\n" + str(file_name) + " failed :" + "\n\n", Colors.PINK)
->>>>>>> Pre-commit black passed
 
             symbol2color = {"+": Colors.GREEN, "-": Colors.RED}
             for line in difflib.unified_diff(reference, response):
@@ -615,35 +507,21 @@ class ArtemisTestFixture(CommonTestFixture):
         # Filtering the answer. (We compare to a reference also filtered with the same filter)
         filtered_response = response_checker.filter(resp_dict)
 
-<<<<<<< HEAD
         # Get the reference
         reference_filepath = self.get_reference_file_path()
-=======
-        # Create the file name
-        filename = self.get_file_name()
-        filepath = os.path.join(config["REFERENCE_FILE_PATH"], filename)
->>>>>>> Pre-commit black passed
 
         assert os.path.isfile(reference_filepath), "{} is not a file".format(
             reference_filepath
         )
 
-<<<<<<< HEAD
         with open(reference_filepath, "r") as f:
-=======
-        with open(filepath, "r") as f:
->>>>>>> Pre-commit black passed
             raw_reference = f.read()
 
         # Transform the string into a dictionary
         ref_dict = json.loads(raw_reference)
 
         # Get only the full_response part from the ref
-<<<<<<< HEAD
         reference_full_response = ref_dict["full_response"]
-=======
-        ref_full_response = dict_ref["full_response"]
->>>>>>> Pre-commit black passed
 
         # Filtering the reference
         filtered_reference = response_checker.filter(reference_full_response)
@@ -655,7 +533,6 @@ class ArtemisTestFixture(CommonTestFixture):
             # print the assertion error message
             logging.error("Assertion Error: %s" % str(e))
             # find name of test
-<<<<<<< HEAD
             filename_prefix = self.get_reference_filename_prefix()
 
             # get output directory path
@@ -692,27 +569,6 @@ class ArtemisTestFixture(CommonTestFixture):
                 pytest_report_makers.add_to_report(
                     self.get_test_name(), http_query, report_message
                 )
-=======
-            file_name = filename.split("/")[-1]
-            file_name = file_name[:-5]
-
-            # create a folder
-            dir_path = config["RESPONSE_FILE_PATH"]
-            if not os.path.exists(dir_path):
-                os.makedirs(dir_path)
-
-            # create path to ref and resp
-            full_file_name_ref = dir_path + "/reference_" + file_name + ".txt"
-            full_file_name_resp = dir_path + "/response_" + file_name + ".txt"
-
-            json_filtered_reference = json.dumps(filtered_reference, indent=4)
-            json_filtered_response = json.dumps(filtered_response, indent=4)
-
-            # Save resp and ref as txt files in folder named outputs
-            ref_resp2files(full_file_name_ref, json_filtered_reference)
-            ref_resp2files(full_file_name_resp, json_filtered_response)
-
->>>>>>> Pre-commit black passed
             # Print difference in console
             # print_diff(response_filepath, output_reference_filepath, self.get_test_name())
 
