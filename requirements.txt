@@ -7,3 +7,6 @@ jsonpath_rw==1.4.0
 psycopg2>=2.6.1
 docker==3.6.0
 ujson
+black==18.9b0; python_version > '3.6'
+mypy==0.670; python_version > '3.0'
+flake8==3.5.0
