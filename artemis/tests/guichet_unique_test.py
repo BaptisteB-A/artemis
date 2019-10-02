@@ -1424,7 +1424,7 @@ class GuichetUnique(object):
         )
 
         """
-        Delete the second station "gare de Auxerre-St-Gervais" in the recently added trip with 15 minutes delay 
+        Delete the second station "gare de Auxerre-St-Gervais" in the recently added trip with 15 minutes delay
         """
         self.send_and_wait(
             "trip_add_paris_marseille_with_delay_15_and_stop_time_deleted.json"

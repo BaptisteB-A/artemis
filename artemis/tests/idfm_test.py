@@ -5,7 +5,7 @@ from artemis.configuration_manager import config
 import pytest
 
 """
-These parameters should be inserted into db via tyr. 
+These parameters should be inserted into db via tyr.
 Since there is no tyr webservice in artemis so far(Sept 2018), we adopt this quick solution
 
 When using Artemis NG, these two parameters are passed by parameters, which are configured in db on Artemis Old
