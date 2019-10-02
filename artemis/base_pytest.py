@@ -18,8 +18,7 @@ from artemis.common_fixture import CommonTestFixture
 
 if six.PY3:  # case using python 3
     from enum import Enum
-
-if six.PY2:  # case using python 2
+elif six.PY2:  # case using python 2
     from aenum import Enum
 
 
@@ -379,7 +378,7 @@ class ArtemisTestFixture(CommonTestFixture):
         # Filtering the answer. (We compare to a reference also filtered with the same filter)
         filtered_response = response_checker.filter(response)
 
-        ### Get the reference
+        # Get the reference
 
         # Create the file name
         filename = self.get_file_name()
@@ -399,7 +398,7 @@ class ArtemisTestFixture(CommonTestFixture):
         # Filtering the reference
         filtered_reference = response_checker.filter(ref_full_response)
 
-        ### Compare response and reference
+        # Compare response and reference
         try:
             response_checker.compare(filtered_response, filtered_reference)
         except AssertionError as e:

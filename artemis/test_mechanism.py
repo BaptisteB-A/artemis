@@ -189,7 +189,7 @@ class ArtemisTestFixture(CommonTestFixture):
         try:
             if os.path.exists(utils.nav_path(data_set.name)):
                 os.remove(utils.nav_path(data_set.name))
-        except:
+        except Exception:
             logging.getLogger(__name__).exception("can't remove data.nav.lz4")
 
     @classmethod
@@ -265,7 +265,7 @@ class ArtemisTestFixture(CommonTestFixture):
 
             conn.commit()
             logging.getLogger(__name__).debug("query done")
-        except:
+        except Exception:
             logging.getLogger(__name__).exception("problem with jormun db")
             conn.close()
             assert False, "problem while cleaning jormungandr db"

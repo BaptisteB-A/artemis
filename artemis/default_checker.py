@@ -63,11 +63,13 @@ default_journey_checker = Checker(
 
 # we don't want full urls in the response, since it will change depending on where the test in run
 # so we remove the server address
-replace_hyperlink = lambda text: re.sub(
-    r"http://.+?/v1/(.*?)/?$", r"http://SERVER_ADDR/v1/\1", text
-)
+def replace_hyperlink(text):
+    return re.sub(r"http://.+?/v1/(.*?)/?$", r"http://SERVER_ADDR/v1/\1", text)
 
-nullify_elem = lambda x: None
+
+def nullify_elem(x):
+    return None
+
 
 # Note: two dots between '$' and 'disruptions[*]' will match ALL (even nested) disruptions under root
 DEFAULT_BLACKLIST_MASK = (

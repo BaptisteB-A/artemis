@@ -43,7 +43,7 @@ def clean_kirin_db():
         )
         conn.commit()
         logger.debug("kirin db purge done")
-    except:
+    except Exception:
         logger.exception("problem with kirin db")
         conn.close()
         assert False, "problem while cleaning kirin db"
