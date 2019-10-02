@@ -12,29 +12,31 @@ from artemis.configuration_manager import config
 import datetime
 from artemis.common_fixture import CommonTestFixture, truncate_tables
 
-_tyr = config['TYR_DIR'] + "/manage.py"
-_tyr_config_file = config['TYR_DIR'] + "/settings.py"
+_tyr = config["TYR_DIR"] + "/manage.py"
+_tyr_config_file = config["TYR_DIR"] + "/settings.py"
 
 # to limit the permissions of the jenkins user on the artemis platform, we create a proxy for all kraken services
-_kraken_wrapper = '/usr/local/bin/kraken_service_wrapper'
+_kraken_wrapper = "/usr/local/bin/kraken_service_wrapper"
 
 
 def dir_path(dataset):
-    p = config['DATASET_PATH_LAYOUT']
+    p = config["DATASET_PATH_LAYOUT"]
     return p.format(dataset=dataset)
 
 
 def nav_path(dataset):
-    p = config['NAV_FILE_PATH_LAYOUT']
+    p = config["NAV_FILE_PATH_LAYOUT"]
     return p.format(dataset=dataset)
 
 
 class DataSet(object):
-    def __init__(self,
-                 name,
-                 reload_timeout=datetime.timedelta(minutes=2),
-                 fixed_wait=datetime.timedelta(seconds=1),
-                 scenario='default'):
+    def __init__(
+        self,
+        name,
+        reload_timeout=datetime.timedelta(minutes=2),
+        fixed_wait=datetime.timedelta(seconds=1),
+        scenario="default",
+    ):
         self.name = name
         self.scenario = scenario
         self.reload_timeout = reload_timeout
@@ -50,37 +52,45 @@ def set_scenario(config):
         for c in cls.__bases__:
             if hasattr(c, "data_sets"):
                 for dataset in c.data_sets:
-                    cls.data_sets.append(DataSet(name=dataset.name,
-                                                 reload_timeout=datetime.timedelta(minutes=2),
-                                                 fixed_wait=datetime.timedelta(seconds=1),
-                                                 scenario=dataset.scenario))
+                    cls.data_sets.append(
+                        DataSet(
+                            name=dataset.name,
+                            reload_timeout=datetime.timedelta(minutes=2),
+                            fixed_wait=datetime.timedelta(seconds=1),
+                            scenario=dataset.scenario,
+                        )
+                    )
         if config:
             for dataset in cls.data_sets:
                 conf = config.get(dataset.name, None)
                 if conf:
                     dataset.scenario = conf.get("scenario", "default")
         return cls
+
     return deco
 
 
 def kraken_status(data_set):
     response, _, _ = utils.request("coverage/{r}".format(r=data_set.name))
-    assert 'error' not in response, "problem with the region: {error}".format(error=response['error'])
+    assert "error" not in response, "problem with the region: {error}".format(
+        error=response["error"]
+    )
 
-    current_region = response.get('regions', [None])[0]
-    #the region should be the one asked for
-    assert current_region and current_region['id'] == data_set.name
+    current_region = response.get("regions", [None])[0]
+    # the region should be the one asked for
+    assert current_region and current_region["id"] == data_set.name
 
-    return current_region['status']
+    return current_region["status"]
 
 
 class ArtemisTestFixture(CommonTestFixture):
     """
     Mother class for all integration tests
     """
+
     dataset_binarized = []
 
-    @pytest.fixture(scope='function', autouse=True)
+    @pytest.fixture(scope="function", autouse=True)
     def before_each_test(self):
         """
         setup function called before each test
@@ -91,23 +101,31 @@ class ArtemisTestFixture(CommonTestFixture):
         self.test_counter = defaultdict(int)
 
     @classmethod
-    @pytest.yield_fixture(scope='class', autouse=True)
+    @pytest.yield_fixture(scope="class", autouse=True)
     def my_method_setup(cls, request):
         """
         method called once for each fixture
 
         Handle init and teardown of the fixture
         """
-        logging.getLogger(__name__).debug("Setting up the tests {}".format(cls.__name__))
-        cls.init_fixture(skip_bina=request.config.getvalue("skip_bina"),
-                         journey_full_response_comparison_mode=request.config.getvalue("hard_journey_check"),
-                         check_ref=request.config.getvalue("check_ref"))
+        logging.getLogger(__name__).debug(
+            "Setting up the tests {}".format(cls.__name__)
+        )
+        cls.init_fixture(
+            skip_bina=request.config.getvalue("skip_bina"),
+            journey_full_response_comparison_mode=request.config.getvalue(
+                "hard_journey_check"
+            ),
+            check_ref=request.config.getvalue("check_ref"),
+        )
 
         logging.getLogger(__name__).debug("Running the tests {}".format(cls.__name__))
         yield
 
         if not request.config.getvalue("check_ref"):
-            logging.getLogger(__name__).debug("Cleaning up the tests {}".format(cls.__name__))
+            logging.getLogger(__name__).debug(
+                "Cleaning up the tests {}".format(cls.__name__)
+            )
             cls.clean_fixture()
 
     @classmethod
@@ -125,7 +143,9 @@ class ArtemisTestFixture(CommonTestFixture):
         # we store the variable to use it a test time
         if journey_full_response_comparison_mode:
             logging.getLogger(__name__).warning("Full journeys comparison activated")
-        cls.journey_full_response_comparison_mode = journey_full_response_comparison_mode
+        cls.journey_full_response_comparison_mode = (
+            journey_full_response_comparison_mode
+        )
         cls.check_ref = check_ref
 
         if check_ref:
@@ -152,7 +172,11 @@ class ArtemisTestFixture(CommonTestFixture):
 
         for data_set in cls.data_sets:
             if data_set.name in cls.dataset_binarized:
-                logging.getLogger(__name__).debug("binarization dataset {} has been done, skipping....".format(data_set))
+                logging.getLogger(__name__).debug(
+                    "binarization dataset {} has been done, skipping....".format(
+                        data_set
+                    )
+                )
                 continue
             cls.remove_data_by_dataset(data_set)
             cls.update_data_by_dataset(data_set)
@@ -176,8 +200,13 @@ class ArtemisTestFixture(CommonTestFixture):
 
         logging.getLogger(__name__).debug("updating data for {}".format(data_set.name))
 
-        #we copy the file to update the reference data
-        shutil.move(fusio_databases_file, os.path.join(utils.instance_data_path(data_set.name), 'fusio/databases.zip'))
+        # we copy the file to update the reference data
+        shutil.move(
+            fusio_databases_file,
+            os.path.join(
+                utils.instance_data_path(data_set.name), "fusio/databases.zip"
+            ),
+        )
 
     @classmethod
     def read_data_by_dataset(cls, data_set):
@@ -185,24 +214,28 @@ class ArtemisTestFixture(CommonTestFixture):
         # we'll read all subdir
         data_path = utils.instance_data_path(data_set.name)
 
-        data_dirs = [os.path.join(data_path, sub_dir_name)
-                     for sub_dir_name in os.listdir(data_path)
-                     if os.path.isdir(os.path.join(data_path, sub_dir_name))]
+        data_dirs = [
+            os.path.join(data_path, sub_dir_name)
+            for sub_dir_name in os.listdir(data_path)
+            if os.path.isdir(os.path.join(data_path, sub_dir_name))
+        ]
 
         logging.getLogger(__name__).debug("loading {}".format(data_dirs))
-        utils.launch_exec("sudo {tyr} load_data {data_set} {data_set_dir}"
-                          .format(tyr=_tyr,
-                                  data_set=data_set.name,
-                                  data_set_dir=','.join(data_dirs)),
-                          additional_env={'TYR_CONFIG_FILE': _tyr_config_file})
+        utils.launch_exec(
+            "sudo {tyr} load_data {data_set} {data_set_dir}".format(
+                tyr=_tyr, data_set=data_set.name, data_set_dir=",".join(data_dirs)
+            ),
+            additional_env={"TYR_CONFIG_FILE": _tyr_config_file},
+        )
 
     @classmethod
     def clean_fixture(cls):
         """
         Method called once after running the tests of the fixture.
         """
-        logging.getLogger(__name__).debug("Tearing down the tests {}, time to clean up"
-                                          .format(cls.__name__))
+        logging.getLogger(__name__).debug(
+            "Tearing down the tests {}, time to clean up".format(cls.__name__)
+        )
         cls.kill_the_krakens()
 
     @classmethod
@@ -215,16 +248,20 @@ class ArtemisTestFixture(CommonTestFixture):
     @classmethod
     def clean_jormun_db(cls):
         logging.getLogger(__name__).debug("cleaning jormungandr database")
-        conn = psycopg2.connect(config['JORMUNGANDR_DB'])
+        conn = psycopg2.connect(config["JORMUNGANDR_DB"])
         try:
             cur = conn.cursor()
-            tables = ['data_set', 'instance', 'job']
+            tables = ["data_set", "instance", "job"]
 
-            truncate_tables(cur, ', '.join(tables))
+            truncate_tables(cur, ", ".join(tables))
 
-            #we add the instances in the table
+            # we add the instances in the table
             for data_set in cls.data_sets:
-                cur.execute("INSERT INTO instance (name, is_free, is_open_data, scenario) VALUES ('{}', true, false, '{}');".format(data_set.name, data_set.scenario))
+                cur.execute(
+                    "INSERT INTO instance (name, is_free, is_open_data, scenario) VALUES ('{}', true, false, '{}');".format(
+                        data_set.name, data_set.scenario
+                    )
+                )
 
             conn.commit()
             logging.getLogger(__name__).debug("query done")
@@ -243,8 +280,14 @@ class ArtemisTestFixture(CommonTestFixture):
             return
 
         for data_set in cls.data_sets:
-            logging.getLogger(__name__).debug("launching the kraken {}".format(data_set.name))
-            return_code, _ = utils.launch_exec('sudo {service} {kraken} start'.format(service=_kraken_wrapper, kraken=data_set.name))
+            logging.getLogger(__name__).debug(
+                "launching the kraken {}".format(data_set.name)
+            )
+            return_code, _ = utils.launch_exec(
+                "sudo {service} {kraken} start".format(
+                    service=_kraken_wrapper, kraken=data_set.name
+                )
+            )
 
             assert return_code == 0, "command failed"
 
@@ -254,8 +297,14 @@ class ArtemisTestFixture(CommonTestFixture):
             return
 
         for data_set in cls.data_sets:
-            logging.getLogger(__name__).debug("killing the kraken {}".format(data_set.name))
-            return_code, _ = utils.launch_exec('sudo {service} {kraken} stop'.format(service=_kraken_wrapper, kraken=data_set.name))
+            logging.getLogger(__name__).debug(
+                "killing the kraken {}".format(data_set.name)
+            )
+            return_code, _ = utils.launch_exec(
+                "sudo {service} {kraken} stop".format(
+                    service=_kraken_wrapper, kraken=data_set.name
+                )
+            )
 
             assert return_code == 0, "command failed"
 
@@ -266,9 +315,9 @@ class ArtemisTestFixture(CommonTestFixture):
         """
         logging.getLogger(__name__).debug("running jormungandr")
         # jormungandr is launched with apache
-        utils.launch_exec('sudo service apache2 status')
-        ret, _ = utils.launch_exec('sudo service apache2 start')
-        utils.launch_exec('sudo service apache2 status')
+        utils.launch_exec("sudo service apache2 status")
+        ret, _ = utils.launch_exec("sudo service apache2 start")
+        utils.launch_exec("sudo service apache2 status")
 
         assert ret == 0, "cannot start apache"
 
@@ -277,19 +326,22 @@ class ArtemisTestFixture(CommonTestFixture):
 
             # we wait a bit for the kraken to be started
             try:
-                Retrying(stop_max_delay=data_set.reload_timeout.total_seconds() * 1000,
-                         wait_fixed=data_set.fixed_wait.total_seconds() * 1000,
-                         retry_on_result=lambda x: x != 'running') \
-                    .call(kraken_status, data_set)
+                Retrying(
+                    stop_max_delay=data_set.reload_timeout.total_seconds() * 1000,
+                    wait_fixed=data_set.fixed_wait.total_seconds() * 1000,
+                    retry_on_result=lambda x: x != "running",
+                ).call(kraken_status, data_set)
             except RetryError as e:
-                assert False, "region {r} KO, status={s}".format(r=data_set.name, s=e.last_attempt.value)
+                assert False, "region {r} KO, status={s}".format(
+                    r=data_set.name, s=e.last_attempt.value
+                )
 
     @classmethod
     def kill_jormungandr(cls):
         logging.getLogger(__name__).debug("killing jormungandr")
-        utils.launch_exec('sudo service apache2 status')
-        ret, _ = utils.launch_exec('sudo service apache2 stop')
-        utils.launch_exec('sudo service apache2 status')
+        utils.launch_exec("sudo service apache2 status")
+        ret, _ = utils.launch_exec("sudo service apache2 stop")
+        utils.launch_exec("sudo service apache2 status")
 
         assert ret == 0, "cannot stop apache"
 
@@ -307,7 +359,7 @@ class ArtemisTestFixture(CommonTestFixture):
         if status_code == 503:
             raise Exception("Navitia is not available")
 
-        return _res.get('status', {}).get('last_rt_data_loaded', object())
+        return _res.get("status", {}).get("last_rt_data_loaded", object())
 
     @retry(stop_max_delay=60000, wait_fixed=500)
     def wait_for_rt_reload(self, last_rt_data_loaded, cov):
@@ -326,7 +378,9 @@ class ArtemisTestFixture(CommonTestFixture):
         NOTE: works only when one region is loaded for the moment (when needed change this)
         """
         if len(self.__class__.data_sets) == 1:
-            full_url = "coverage/{region}/{url}".format(region=self.__class__.data_sets[0].name, url=url)
+            full_url = "coverage/{region}/{url}".format(
+                region=self.__class__.data_sets[0].name, url=url
+            )
 
         return self._api_call(full_url, response_checker)
 
@@ -348,11 +402,20 @@ class ArtemisTestFixture(CommonTestFixture):
 
         utils.compare_with_ref(filtered_response, filename, response_checker)
 
-    def journey(self, _from, to, datetime, datetime_represents='departure',
-                response_checker=default_checker.default_journey_checker,
-                auto_from=None, auto_to=None,
-                first_section_mode=[], last_section_mode=[],
-                direct_path_mode=[], **kwargs):
+    def journey(
+        self,
+        _from,
+        to,
+        datetime,
+        datetime_represents="departure",
+        response_checker=default_checker.default_journey_checker,
+        auto_from=None,
+        auto_to=None,
+        first_section_mode=[],
+        last_section_mode=[],
+        direct_path_mode=[],
+        **kwargs
+    ):
         """
         syntactic sugar around the journey api
 
@@ -369,17 +432,20 @@ class ArtemisTestFixture(CommonTestFixture):
         assert real_to
 
         assert datetime
-        query = "from={real_from}&to={real_to}&datetime={date}&datetime_represents={represent}".\
-            format(date=datetime, represent=datetime_represents,
-                   real_from=real_from, real_to=real_to)
+        query = "from={real_from}&to={real_to}&datetime={date}&datetime_represents={represent}".format(
+            date=datetime,
+            represent=datetime_represents,
+            real_from=real_from,
+            real_to=real_to,
+        )
         for mode in first_section_mode:
-            query = '{query}&first_section_mode[]={mode}'.format(query=query, mode=mode)
+            query = "{query}&first_section_mode[]={mode}".format(query=query, mode=mode)
 
         for mode in last_section_mode:
-            query = '{query}&last_section_mode[]={mode}'.format(query=query, mode=mode)
+            query = "{query}&last_section_mode[]={mode}".format(query=query, mode=mode)
 
         for mode in direct_path_mode:
-            query = '{query}&direct_path_mode[]={mode}'.format(query=query, mode=mode)
+            query = "{query}&direct_path_mode[]={mode}".format(query=query, mode=mode)
 
         for k, v in kwargs.iteritems():
             query = "{query}&{k}={v}".format(query=query, k=k, v=v)
@@ -387,7 +453,9 @@ class ArtemisTestFixture(CommonTestFixture):
             # for tests with only one dataset, we directly use the region's journey API
             # Note: this should not be mandatory, but since there are still bugs with the global journey API
             # we use this for the moment.
-            query = "coverage/{region}/journeys?{q}".format(region=self.__class__.data_sets[0].name, q=query)
+            query = "coverage/{region}/journeys?{q}".format(
+                region=self.__class__.data_sets[0].name, q=query
+            )
 
         if self.journey_full_response_comparison_mode:
             # we want to compare the journeys very thoroughly, check the non regression on the full_response
@@ -400,24 +468,26 @@ class ArtemisTestFixture(CommonTestFixture):
         save the response in a file and return the filename (with the fixture directory)
         """
         filename = self.get_file_name()
-        file_complete_path = os.path.join(config['RESPONSE_FILE_PATH'], filename)
+        file_complete_path = os.path.join(config["RESPONSE_FILE_PATH"], filename)
         if not os.path.exists(os.path.dirname(file_complete_path)):
             os.makedirs(os.path.dirname(file_complete_path))
 
-        #to ease debug, we add additional information to the file
-        #only the response elt will be compared, so we can add what we want (additional flags or whatever)
-        enhanced_response = {"query": url,
-                             "response": filtered_response,
-                             "full_response": response}
+        # to ease debug, we add additional information to the file
+        # only the response elt will be compared, so we can add what we want (additional flags or whatever)
+        enhanced_response = {
+            "query": url,
+            "response": filtered_response,
+            "full_response": response,
+        }
 
-        file_ = open(file_complete_path, 'w')
+        file_ = open(file_complete_path, "w")
         file_.write(json.dumps(enhanced_response, indent=2))
         file_.close()
 
         return filename
 
     def call_autocomplete(self, place):
-        #TODO!
+        # TODO!
         pass
 
 
@@ -431,4 +501,5 @@ def dataset(datasets):
     def deco(cls):
         cls.data_sets = datasets
         return cls
+
     return deco

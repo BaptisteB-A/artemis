@@ -24,7 +24,7 @@ There is also 4 custom artemis parameters:
 
  * --skip_cities: skip the loading of the cities database. It can save time when running several times artemis.
  WARNING the test will fail if the cities database is not loaded.
- 
+
  * --skip_bina: skip the loading of the ED data. It can save lots of time when running several times artemis.
  WARNING the test will fail if the data are not loaded
 
@@ -102,7 +102,7 @@ class TestParisAndLyon(ArtemisTestFixture):
         check_some_stuff(res)  # --> more custom python tests might be made
 
         add_diruptions()
-        # --> some changes might be made to the environment 
+        # --> some changes might be made to the environment
         # --> like adding disruptions, killing a service to test failure recovery, adding data, ...
 
         res2 = self.api("v1/stop_areas/bob/stop_points/")

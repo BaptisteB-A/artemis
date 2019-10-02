@@ -19,13 +19,17 @@ def truncate_tables(cursor, table_names_string):
 # the time cost is around 1.3s on artemis platform
 def clean_kirin_db():
     logger.info("cleaning kirin database")
-    conn = psycopg2.connect(config['KIRIN_DB'])
+    conn = psycopg2.connect(config["KIRIN_DB"])
     try:
         cur = conn.cursor()
-        cur.execute("SELECT relname FROM pg_stat_user_tables WHERE relname != 'alembic_version';")
+        cur.execute(
+            "SELECT relname FROM pg_stat_user_tables WHERE relname != 'alembic_version';"
+        )
         tables = cur.fetchall()
 
-        truncate_tables(cur, ', '.join(e[0] for e in tables if e[0] not in ("layer", "topology")))
+        truncate_tables(
+            cur, ", ".join(e[0] for e in tables if e[0] not in ("layer", "topology"))
+        )
 
         conn.commit()
 
@@ -63,7 +67,7 @@ class CommonTestFixture(object):
         scenario = mro[0].data_sets[0].scenario
 
         func_name = utils.get_calling_test_function()
-        test_name = '{}/{}/{}'.format(class_name, scenario, func_name)
+        test_name = "{}/{}/{}".format(class_name, scenario, func_name)
 
         self.test_counter[test_name] += 1
 
@@ -74,9 +78,11 @@ class CommonTestFixture(object):
 
     @staticmethod
     def _send_cots(cots_file_name):
-        r = requests.post(config['KIRIN_API'] + '/cots',
-                          data=utils.get_rt_data(cots_file_name).encode('UTF-8'),
-                          headers={'Content-Type': 'application/json;charset=utf-8'})
+        r = requests.post(
+            config["KIRIN_API"] + "/cots",
+            data=utils.get_rt_data(cots_file_name).encode("UTF-8"),
+            headers={"Content-Type": "application/json;charset=utf-8"},
+        )
         r.raise_for_status()
 
     def send_and_wait(self, rt_file_name):
