@@ -1,11 +1,11 @@
 language: python
 python:
-  - "2.7"
   - "3.6"
 
 install:
   - pip install -r requirements_py2.txt -r requirements.txt
   - pip install pre-commit
+  - pre-commit install
 
 script:
   - pre-commit run --all-files --show-diff-on-failure
