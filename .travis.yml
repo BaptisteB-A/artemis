@@ -5,6 +5,7 @@ python:
 
 install:
   - pip install -r requirements_py2.txt -r requirements.txt
+  - pip install pre-commit
 
 script:
   - pre-commit run --all-files --show-diff-on-failure
