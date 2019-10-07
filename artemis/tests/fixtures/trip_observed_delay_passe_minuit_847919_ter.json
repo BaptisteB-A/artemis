@@ -1,643 +1,735 @@
 {
-	"ressource": "courseOPE",
-	"mode": "modification",
-	"evt": ["PERTURBATION"],
-	"PdPObserveArrivee": [],
-	"PdPObserveDepart": [],
-	"PdPPronosticBrutArrivee": ["ff20caec-ae59-4b7e-a565-038373088683",
-	"097b495e-8d93-4e74-9e9b-229ce0ff1855",
-	"eb329a15-989d-4e43-bf45-d08e5353fa09",
-	"017a4efb-7888-4f4d-981d-d7ac3d085c6b",
-	"e0e63797-ee15-482f-9882-0d78c2d5948b",
-	"087c01f4-caf3-40b4-a0e3-5bc9355ad440",
-	"8e1fef47-a534-485b-8ca9-b078a389af82"],
-	"PdPPronosticBrutDepart": ["097b495e-8d93-4e74-9e9b-229ce0ff1855",
-	"eb329a15-989d-4e43-bf45-d08e5353fa09",
-	"017a4efb-7888-4f4d-981d-d7ac3d085c6b",
-	"e0e63797-ee15-482f-9882-0d78c2d5948b",
-	"087c01f4-caf3-40b4-a0e3-5bc9355ad440",
-	"8e1fef47-a534-485b-8ca9-b078a389af82"],
-	"PdPPronosticIVArrivee": ["ff20caec-ae59-4b7e-a565-038373088683",
-	"097b495e-8d93-4e74-9e9b-229ce0ff1855",
-	"eb329a15-989d-4e43-bf45-d08e5353fa09",
-	"017a4efb-7888-4f4d-981d-d7ac3d085c6b",
-	"e0e63797-ee15-482f-9882-0d78c2d5948b",
-	"087c01f4-caf3-40b4-a0e3-5bc9355ad440",
-	"8e1fef47-a534-485b-8ca9-b078a389af82"],
-	"PdPPronosticIVDepart": ["097b495e-8d93-4e74-9e9b-229ce0ff1855",
-	"eb329a15-989d-4e43-bf45-d08e5353fa09",
-	"017a4efb-7888-4f4d-981d-d7ac3d085c6b",
-	"e0e63797-ee15-482f-9882-0d78c2d5948b",
-	"087c01f4-caf3-40b4-a0e3-5bc9355ad440",
-	"8e1fef47-a534-485b-8ca9-b078a389af82"],
-	"PdPImpacteDepart": [],
-	"PdPImpacteArrivee": [],
-	"nouvelleVersion": {
-		"codeCompagnieTransporteur": "1187",
-		"codeMarqueTransporteur": "TER",
-		"codeRelation": "AM 12",
-		"codeService": "A2018",
-		"codeTransporteurResponsable": "5A",
-		"codeTypeMoyenTransport": "0",
-		"coursePTA": {
-			"@id": "c575cbf4-5f9d-4daa-997b-2d891f724c07"
-		},
-		"dateDebutService": "2012-09-13",
-		"dateDerniereModification": "2012-12-16T12:30:21+0000",
-		"dateFinService": "2012-12-31",
-		"estDiscontinue": false,
-		"estTechnique": false,
-		"estimationManuelle": false,
-		"etat": "ACTIVE",
-		"idMotifInterneReference": 13,
-		"idVersion": "513afc08-64db-4023-9bc1-cb9328fcdcad",
-		"identifiantDansSystemeCreateur": "2f3d1036-5a24-4fd6-b3a3-6824d3f734ed",
-		"indicateurFer": "FERRE",
-		"listeCouplageCourseOPE": [],
-		"listeCodeTransporteurAssocie": [],
-		"listeEvenement": [{
-			"dateHeureCreation": "2012-12-16T12:30:21+0000",
-			"identifiantDansSystemeCreateur": "CROPN300820180042",
-			"lieu": {
-				"cr": "0087",
-				"ci": "271007",
-				"ch": "P7"
-			},
-			"systemeCreateur": "2887"
-		}],
-		"listeJourRegimeDApplication": [{
-			"date": "2012-12-16"
-		}],
-		"listeJourRegimeFacultatif": [],
-		"listeMotif": [{
-			"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-			"idMotifInterne": 13,
-			"source": "IRE-GOP"
-		}],
-		"listePointDeParcours": [{
-			"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8",
-			"arretFacultatif": false,
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "271007",
-			"ch": "BV",
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "22:34:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T21:34:00+0000",
-				"heureLocale": "22:34:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"listeHoraireProjeteArrivee": [],
-			"listeHoraireProjeteDepart": [],
-			"listeMotifArrivee": [],
-			"listeMotifDepart": [],
-			"rang": 1,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "eb329a15-989d-4e43-bf45-d08e5353fa09",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "276006",
-			"ch": "BV",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:06:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:08:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T22:06:00+0000",
-				"heureLocale": "23:06:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T22:08:00+0000",
-				"heureLocale": "23:08:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T22:33:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T22:35:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 2,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "276329",
-			"ch": "BV",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:14:30",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:16:30",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T22:14:30+0000",
-				"heureLocale": "23:14:30",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T22:16:30+0000",
-				"heureLocale": "23:16:30",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T22:41:30+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T22:43:30+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 3,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "8e1fef47-a534-485b-8ca9-b078a389af82",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "276691",
-			"ch": "BV",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:27:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:29:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T22:27:00+0000",
-				"heureLocale": "23:27:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T22:29:00+0000",
-				"heureLocale": "23:29:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T22:54:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T22:56:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 4,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "e0e63797-ee15-482f-9882-0d78c2d5948b",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "276782",
-			"ch": "00",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:41:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:43:00",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T22:41:00+0000",
-				"heureLocale": "23:41:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T22:43:00+0000",
-				"heureLocale": "23:43:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T23:08:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T22:10:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 5,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "296616",
-			"ch": "00",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:52:30",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "23:54:30",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T22:52:30+0000",
-				"heureLocale": "23:52:30",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T22:54:30+0000",
-				"heureLocale": "23:54:30",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 0
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T23:19:30+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T23:21:30+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 6,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "097b495e-8d93-4e74-9e9b-229ce0ff1855",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"categorieStatistiqueDepart": "RBA",
-			"cr": "0087",
-			"ci": "296442",
-			"ch": "BV",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "00:00:00",
-				"nbJoursPasseMinuit": 1
-			},
-			"horaireProductionDepart": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "00:02:00",
-				"nbJoursPasseMinuit": 1
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T23:00:00+0000",
-				"heureLocale": "00:00:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 1
-			},
-			"horaireVoyageurDepart": {
-				"dateHeure": "2012-12-16T23:02:00+0000",
-				"heureLocale": "00:02:00",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 1
-			},
-			"idMotifInterneArriveeReference": 13,
-			"idMotifInterneDepartReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T23:27:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [{
-				"dateHeure": "2012-12-16T23:29:00+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"rang": 7,
-			"typeArret": "CH"
-		},
-		{
-			"@id": "ff20caec-ae59-4b7e-a565-038373088683",
-			"arretFacultatif": false,
-			"categorieStatistiqueArrivee": "RBA",
-			"cr": "0087",
-			"ci": "296004",
-			"ch": "BV",
-			"horaireProductionArrivee": {
-				"idFuseauHoraire": "Europe/Paris",
-				"heureIncertaine": false,
-				"heureLocale": "00:15:30",
-				"nbJoursPasseMinuit": 1
-			},
-			"horaireVoyageurArrivee": {
-				"dateHeure": "2012-12-16T23:15:30+0000",
-				"heureLocale": "00:15:30",
-				"idFuseauHoraire": "Europe/Paris",
-				"nbJoursPasseMinuit": 1
-			},
-			"idMotifInterneArriveeReference": 13,
-			"listeHoraireProjeteArrivee": [{
-				"dateHeure": "2012-12-16T23:42:30+0000",
-				"dateHeureEmission": "2012-12-16T12:30:21+0000",
-				"pronosticBrut": 1620,
-				"pronosticIV": 1500,
-				"source": "IRE-GOP"
-			}],
-			"listeHoraireProjeteDepart": [],
-			"listeMotifArrivee": [{
-				"dateHeureDeclaration": "2012-12-16T12:30:21+0000",
-				"idMotifInterne": 13,
-				"source": "IRE-GOP"
-			}],
-			"listeMotifDepart": [],
-			"rang": 8,
-			"typeArret": "CH"
-		}],
-		"listeService": [{
-			"code": "CS02",
-			"listeJourRegimeDApplication": [{
-				"date": "2012-12-16"
-			}],
-			"listePropriete": [{
-				"code": "CP003",
-				"metaPropriete": {
-					"@id": "0d6a74ed-f97e-46f6-a2d7-3f4634cc30f9"
-				},
-				"valeurChaine": "RBW - 5A"
-			}],
-			"metaService": {
-				"@id": "40489f74-e95c-4003-afbe-26f6a01149ee"
-			},
-			"pointDeParcoursDebut": {
-				"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
-			},
-			"pointDeParcoursFin": {
-				"@id": "ff20caec-ae59-4b7e-a565-038373088683"
-			}
-		},
-		{
-			"code": "CS01",
-			"listeJourRegimeDApplication": [{
-				"date": "2012-12-16"
-			}],
-			"listePropriete": [{
-				"code": "CP002",
-				"metaPropriete": {
-					"@id": "350d89f9-8667-4456-9186-765ce07ea238"
-				},
-				"valeurChaine": "Z26500 5C - 5A"
-			}],
-			"metaService": {
-				"@id": "590ecf63-8dcc-46d5-b238-391fd681eba1"
-			},
-			"pointDeParcoursDebut": {
-				"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
-			},
-			"pointDeParcoursFin": {
-				"@id": "ff20caec-ae59-4b7e-a565-038373088683"
-			}
-		},
-		{
-			"code": "CS01",
-			"listeJourRegimeDApplication": [{
-				"date": "2012-12-16"
-			}],
-			"listePropriete": [{
-				"code": "CP001",
-				"metaPropriete": {
-					"@id": "95352652-200c-430b-8a94-3852677c91ea"
-				},
-				"valeurChaine": "BB15000 - 5A"
-			}],
-			"metaService": {
-				"@id": "590ecf63-8dcc-46d5-b238-391fd681eba1"
-			},
-			"pointDeParcoursDebut": {
-				"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
-			},
-			"pointDeParcoursFin": {
-				"@id": "ff20caec-ae59-4b7e-a565-038373088683"
-			}
-		},
-		{
-			"code": "CS07",
-			"listeJourRegimeDApplication": [{
-				"date": "2012-12-16"
-			}],
-			"listePropriete": [{
-				"code": "CP011",
-				"metaPropriete": {
-					"@id": "7e6e6099-fc5f-4e68-8d63-8f55af3d22a0"
-				},
-				"valeurChaine": "B"
-			},
-			{
-				"code": "CP012",
-				"metaPropriete": {
-					"@id": "7442d4cc-a8a1-447e-b4fc-0e3450df1b8a"
-				},
-				"valeurChaine": "TER"
-			},
-			{
-				"code": "CP010",
-				"metaPropriete": {
-					"@id": "1b27a75b-8e1b-4d8d-8997-59b4a59a62b7"
-				},
-				"valeurChaine": "O"
-			},
-			{
-				"code": "CP014",
-				"metaPropriete": {
-					"@id": "76ba31a2-ffcc-4821-b249-6c8c02d9e28d"
-				},
-				"valeurChaine": "CVA014-001"
-			}],
-			"metaService": {
-				"@id": "04e0d309-2160-4e43-a3dd-cc77a71d08df"
-			},
-			"pointDeParcoursDebut": {
-				"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
-			},
-			"pointDeParcoursFin": {
-				"@id": "ff20caec-ae59-4b7e-a565-038373088683"
-			}
-		}],
-		"listeSubstitutionCourse": [],
-		"listeUtilisationSillon": [{
-			"identifiantSillon": {
-				"numeroOperationnelSillon": "847919",
-				"sillonTTH": "042579590026"
-			},
-			"listeJourRegimeDApplication": [{
-				"date": "2012-12-16"
-			}],
-			"listeJourRegimeFacultatif": [],
-			"pointDebutUtilisationSillon": {
-				"@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
-			},
-			"pointFinUtilisationSillon": {
-				"@id": "ff20caec-ae59-4b7e-a565-038373088683"
-			},
-			"porteur": true,
-			"rangPRDebutUtilisationSillon": 1,
-			"decalagePasseMinuit": 0,
-			"rangPRFinUtilisationSillon": 49
-		}],
-		"numeroCourse": "847919",
-		"statutSillonCourse": "NON_CONNU",
-		"statutOperationnel": "PERTURBEE",
-		"systemeCreateur": "2148",
-		"type": "COURSE_OPE",
-		"@id": "2f3d1036-5a24-4fd6-b3a3-6824d3f734ed"
-	}
+  "PdPImpacteArrivee": [],
+  "PdPImpacteDepart": [],
+  "PdPObserveArrivee": [],
+  "PdPObserveDepart": [],
+  "PdPPronosticBrutArrivee": [
+    "ff20caec-ae59-4b7e-a565-038373088683",
+    "097b495e-8d93-4e74-9e9b-229ce0ff1855",
+    "eb329a15-989d-4e43-bf45-d08e5353fa09",
+    "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
+    "e0e63797-ee15-482f-9882-0d78c2d5948b",
+    "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
+    "8e1fef47-a534-485b-8ca9-b078a389af82"
+  ],
+  "PdPPronosticBrutDepart": [
+    "097b495e-8d93-4e74-9e9b-229ce0ff1855",
+    "eb329a15-989d-4e43-bf45-d08e5353fa09",
+    "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
+    "e0e63797-ee15-482f-9882-0d78c2d5948b",
+    "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
+    "8e1fef47-a534-485b-8ca9-b078a389af82"
+  ],
+  "PdPPronosticIVArrivee": [
+    "ff20caec-ae59-4b7e-a565-038373088683",
+    "097b495e-8d93-4e74-9e9b-229ce0ff1855",
+    "eb329a15-989d-4e43-bf45-d08e5353fa09",
+    "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
+    "e0e63797-ee15-482f-9882-0d78c2d5948b",
+    "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
+    "8e1fef47-a534-485b-8ca9-b078a389af82"
+  ],
+  "PdPPronosticIVDepart": [
+    "097b495e-8d93-4e74-9e9b-229ce0ff1855",
+    "eb329a15-989d-4e43-bf45-d08e5353fa09",
+    "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
+    "e0e63797-ee15-482f-9882-0d78c2d5948b",
+    "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
+    "8e1fef47-a534-485b-8ca9-b078a389af82"
+  ],
+  "evt": [
+    "PERTURBATION"
+  ],
+  "mode": "modification",
+  "nouvelleVersion": {
+    "@id": "2f3d1036-5a24-4fd6-b3a3-6824d3f734ed",
+    "codeCompagnieTransporteur": "1187",
+    "codeMarqueTransporteur": "TER",
+    "codeRelation": "AM 12",
+    "codeService": "A2018",
+    "codeTransporteurResponsable": "5A",
+    "codeTypeMoyenTransport": "0",
+    "coursePTA": {
+      "@id": "c575cbf4-5f9d-4daa-997b-2d891f724c07"
+    },
+    "dateDebutService": "2012-09-13",
+    "dateDerniereModification": "2012-12-16T12:30:21+0000",
+    "dateFinService": "2012-12-31",
+    "estDiscontinue": false,
+    "estTechnique": false,
+    "estimationManuelle": false,
+    "etat": "ACTIVE",
+    "idMotifInterneReference": 13,
+    "idVersion": "513afc08-64db-4023-9bc1-cb9328fcdcad",
+    "identifiantDansSystemeCreateur": "2f3d1036-5a24-4fd6-b3a3-6824d3f734ed",
+    "indicateurFer": "FERRE",
+    "listeCodeTransporteurAssocie": [],
+    "listeCouplageCourseOPE": [],
+    "listeEvenement": [
+      {
+        "dateHeureCreation": "2012-12-16T12:30:21+0000",
+        "identifiantDansSystemeCreateur": "CROPN300820180042",
+        "lieu": {
+          "ch": "P7",
+          "ci": "271007",
+          "cr": "0087"
+        },
+        "systemeCreateur": "2887"
+      }
+    ],
+    "listeJourRegimeDApplication": [
+      {
+        "date": "2012-12-16"
+      }
+    ],
+    "listeJourRegimeFacultatif": [],
+    "listeMotif": [
+      {
+        "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+        "idMotifInterne": 13,
+        "source": "IRE-GOP"
+      }
+    ],
+    "listePointDeParcours": [
+      {
+        "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8",
+        "arretFacultatif": false,
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "BV",
+        "ci": "271007",
+        "cr": "0087",
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "22:34:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T21:34:00+0000",
+          "heureLocale": "22:34:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "listeHoraireProjeteArrivee": [],
+        "listeHoraireProjeteDepart": [],
+        "listeMotifArrivee": [],
+        "listeMotifDepart": [],
+        "rang": 1,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "eb329a15-989d-4e43-bf45-d08e5353fa09",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "BV",
+        "ci": "276006",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "23:06:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "23:08:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T22:06:00+0000",
+          "heureLocale": "23:06:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T22:08:00+0000",
+          "heureLocale": "23:08:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T22:33:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T22:35:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 2,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "017a4efb-7888-4f4d-981d-d7ac3d085c6b",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "BV",
+        "ci": "276329",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "23:14:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "23:16:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T22:14:30+0000",
+          "heureLocale": "23:14:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T22:16:30+0000",
+          "heureLocale": "23:16:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T22:41:30+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T22:43:30+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 3,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "8e1fef47-a534-485b-8ca9-b078a389af82",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "BV",
+        "ci": "276691",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "23:27:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "23:29:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T22:27:00+0000",
+          "heureLocale": "23:27:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T22:29:00+0000",
+          "heureLocale": "23:29:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T22:54:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T22:56:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 4,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "e0e63797-ee15-482f-9882-0d78c2d5948b",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "00",
+        "ci": "276782",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "23:41:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "23:43:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T22:41:00+0000",
+          "heureLocale": "23:41:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T22:43:00+0000",
+          "heureLocale": "23:43:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T23:08:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T22:10:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 5,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "087c01f4-caf3-40b4-a0e3-5bc9355ad440",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "00",
+        "ci": "296616",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "23:52:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "23:54:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T22:52:30+0000",
+          "heureLocale": "23:52:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T22:54:30+0000",
+          "heureLocale": "23:54:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 0
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T23:19:30+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T23:21:30+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 6,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "097b495e-8d93-4e74-9e9b-229ce0ff1855",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "categorieStatistiqueDepart": "RBA",
+        "ch": "BV",
+        "ci": "296442",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "00:00:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "horaireProductionDepart": {
+          "heureIncertaine": false,
+          "heureLocale": "00:02:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T23:00:00+0000",
+          "heureLocale": "00:00:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "horaireVoyageurDepart": {
+          "dateHeure": "2012-12-16T23:02:00+0000",
+          "heureLocale": "00:02:00",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "idMotifInterneArriveeReference": 13,
+        "idMotifInterneDepartReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T23:27:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [
+          {
+            "dateHeure": "2012-12-16T23:29:00+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "rang": 7,
+        "typeArret": "CH"
+      },
+      {
+        "@id": "ff20caec-ae59-4b7e-a565-038373088683",
+        "arretFacultatif": false,
+        "categorieStatistiqueArrivee": "RBA",
+        "ch": "BV",
+        "ci": "296004",
+        "cr": "0087",
+        "horaireProductionArrivee": {
+          "heureIncertaine": false,
+          "heureLocale": "00:15:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "horaireVoyageurArrivee": {
+          "dateHeure": "2012-12-16T23:15:30+0000",
+          "heureLocale": "00:15:30",
+          "idFuseauHoraire": "Europe/Paris",
+          "nbJoursPasseMinuit": 1
+        },
+        "idMotifInterneArriveeReference": 13,
+        "listeHoraireProjeteArrivee": [
+          {
+            "dateHeure": "2012-12-16T23:42:30+0000",
+            "dateHeureEmission": "2012-12-16T12:30:21+0000",
+            "pronosticBrut": 1620,
+            "pronosticIV": 1500,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeHoraireProjeteDepart": [],
+        "listeMotifArrivee": [
+          {
+            "dateHeureDeclaration": "2012-12-16T12:30:21+0000",
+            "idMotifInterne": 13,
+            "source": "IRE-GOP"
+          }
+        ],
+        "listeMotifDepart": [],
+        "rang": 8,
+        "typeArret": "CH"
+      }
+    ],
+    "listeService": [
+      {
+        "code": "CS02",
+        "listeJourRegimeDApplication": [
+          {
+            "date": "2012-12-16"
+          }
+        ],
+        "listePropriete": [
+          {
+            "code": "CP003",
+            "metaPropriete": {
+              "@id": "0d6a74ed-f97e-46f6-a2d7-3f4634cc30f9"
+            },
+            "valeurChaine": "RBW - 5A"
+          }
+        ],
+        "metaService": {
+          "@id": "40489f74-e95c-4003-afbe-26f6a01149ee"
+        },
+        "pointDeParcoursDebut": {
+          "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
+        },
+        "pointDeParcoursFin": {
+          "@id": "ff20caec-ae59-4b7e-a565-038373088683"
+        }
+      },
+      {
+        "code": "CS01",
+        "listeJourRegimeDApplication": [
+          {
+            "date": "2012-12-16"
+          }
+        ],
+        "listePropriete": [
+          {
+            "code": "CP002",
+            "metaPropriete": {
+              "@id": "350d89f9-8667-4456-9186-765ce07ea238"
+            },
+            "valeurChaine": "Z26500 5C - 5A"
+          }
+        ],
+        "metaService": {
+          "@id": "590ecf63-8dcc-46d5-b238-391fd681eba1"
+        },
+        "pointDeParcoursDebut": {
+          "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
+        },
+        "pointDeParcoursFin": {
+          "@id": "ff20caec-ae59-4b7e-a565-038373088683"
+        }
+      },
+      {
+        "code": "CS01",
+        "listeJourRegimeDApplication": [
+          {
+            "date": "2012-12-16"
+          }
+        ],
+        "listePropriete": [
+          {
+            "code": "CP001",
+            "metaPropriete": {
+              "@id": "95352652-200c-430b-8a94-3852677c91ea"
+            },
+            "valeurChaine": "BB15000 - 5A"
+          }
+        ],
+        "metaService": {
+          "@id": "590ecf63-8dcc-46d5-b238-391fd681eba1"
+        },
+        "pointDeParcoursDebut": {
+          "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
+        },
+        "pointDeParcoursFin": {
+          "@id": "ff20caec-ae59-4b7e-a565-038373088683"
+        }
+      },
+      {
+        "code": "CS07",
+        "listeJourRegimeDApplication": [
+          {
+            "date": "2012-12-16"
+          }
+        ],
+        "listePropriete": [
+          {
+            "code": "CP011",
+            "metaPropriete": {
+              "@id": "7e6e6099-fc5f-4e68-8d63-8f55af3d22a0"
+            },
+            "valeurChaine": "B"
+          },
+          {
+            "code": "CP012",
+            "metaPropriete": {
+              "@id": "7442d4cc-a8a1-447e-b4fc-0e3450df1b8a"
+            },
+            "valeurChaine": "TER"
+          },
+          {
+            "code": "CP010",
+            "metaPropriete": {
+              "@id": "1b27a75b-8e1b-4d8d-8997-59b4a59a62b7"
+            },
+            "valeurChaine": "O"
+          },
+          {
+            "code": "CP014",
+            "metaPropriete": {
+              "@id": "76ba31a2-ffcc-4821-b249-6c8c02d9e28d"
+            },
+            "valeurChaine": "CVA014-001"
+          }
+        ],
+        "metaService": {
+          "@id": "04e0d309-2160-4e43-a3dd-cc77a71d08df"
+        },
+        "pointDeParcoursDebut": {
+          "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
+        },
+        "pointDeParcoursFin": {
+          "@id": "ff20caec-ae59-4b7e-a565-038373088683"
+        }
+      }
+    ],
+    "listeSubstitutionCourse": [],
+    "listeUtilisationSillon": [
+      {
+        "decalagePasseMinuit": 0,
+        "identifiantSillon": {
+          "numeroOperationnelSillon": "847919",
+          "sillonTTH": "042579590026"
+        },
+        "listeJourRegimeDApplication": [
+          {
+            "date": "2012-12-16"
+          }
+        ],
+        "listeJourRegimeFacultatif": [],
+        "pointDebutUtilisationSillon": {
+          "@id": "c40ae2f8-0977-4f71-8090-de60f5535ab8"
+        },
+        "pointFinUtilisationSillon": {
+          "@id": "ff20caec-ae59-4b7e-a565-038373088683"
+        },
+        "porteur": true,
+        "rangPRDebutUtilisationSillon": 1,
+        "rangPRFinUtilisationSillon": 49
+      }
+    ],
+    "numeroCourse": "847919",
+    "statutOperationnel": "PERTURBEE",
+    "statutSillonCourse": "NON_CONNU",
+    "systemeCreateur": "2148",
+    "type": "COURSE_OPE"
+  },
+  "ressource": "courseOPE"
 }
