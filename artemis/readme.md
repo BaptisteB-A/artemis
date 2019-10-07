@@ -7,18 +7,18 @@ aka ArtemisNG has been designed to run tests using docker-compose, in order to b
 ### 1. Run Navitia services in docker containers
 
 *   You can clone the repository navitia-docker-compose, available [here](https://github.com/CanalTP/navitia-docker-compose) and follow the instructions in the [readme](https://github.com/CanalTP/navitia-docker-compose/blob/master/README.md) file to have the whole Navitia environment running.
-    - Basic usage: launch this command at the root directory of the repo 'navitia-docker-compose':
+    - Basic usage: launch this command at the root directory of the repo 'navitia-docker-compose':\
     `docker-compose -f docker-compose.yml -f artemis/docker-artemis-instance.yml up`
 
         *Note: the file in the command above [docker-artemis-instance.yml](https://github.com/CanalTP/navitia-docker-compose/blob/master/artemis/docker-artemis-instance.yml) references every coverages available for Artemis. Therefore, a docker container will be started for each of these coverages. You can edit this file to start only the coverage(s) needed.*
     - To run real-time tests, Kirin is needed. Please refer to these
-    [instructions](https://github.com/CanalTP/navitia-docker-compose/blob/master/kirin/README.md) to have it in the docker-compose. In this case, the command is:
+    [instructions](https://github.com/CanalTP/navitia-docker-compose/blob/master/kirin/README.md) to have it in the docker-compose. In this case, the command is:\
     `docker-compose -f docker-compose.yml -f artemis/docker-artemis-instance.yml -f kirin/docker-compose_kirin.yml up`
 
 ### 2. Run tests with Artemis NG
 
-* Create a virtual environment with the python packages in requirements.txt (for python 3):
-    `mkvirtualenv  -p python3 -r requirements.txt <venv_name>`
+* Create a virtual environment with the python packages in requirements.txt (for python 3):\
+`mkvirtualenv  -p python3 -r requirements.txt <venv_name>`
 
 * In default_settings.py, set the following parameters:
     - USE_ARTEMIS_NG = True
