@@ -12,6 +12,7 @@ repos:
     -   id: check-merge-conflict
     -   id: check-json
     -   id: check-yaml
+    -   id: end-of-file-fixer
         language_version: python2.7
     -   id: flake8
         args: [--ignore=E501]
