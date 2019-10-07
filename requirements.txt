@@ -10,3 +10,4 @@ ujson
 black==18.9b0; python_version > '3.6'
 mypy==0.670; python_version > '3.0'
 flake8==3.5.0
+jsondiff==1.2.0
