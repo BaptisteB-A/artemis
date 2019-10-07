@@ -7,7 +7,7 @@ pull_request_rules:
       - "#commented-reviews-by=0"
       - base=master
       - label!=dot_not_merge
-      - author=@CoreTeam
+      - author=@coreteam
     actions:
       merge:
         method: merge
