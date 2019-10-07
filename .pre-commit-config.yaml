@@ -16,3 +16,5 @@ repos:
         language_version: python2.7
     -   id: flake8
         args: [--ignore=E501]
+    -   id: pretty-format-json
+        args: [--autofix]
