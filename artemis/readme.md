@@ -30,11 +30,12 @@ aka ArtemisNG has been designed to run tests using docker-compose, in order to b
     - KIRIN_API (if needed)
     - KIRIN_DB (if needed)
       If Kirin is launched via kirin/docker-compose_kirin.yml, use the parameters from the section 'kirin_database' from the file [docker-compose-kirin](https://github.com/CanalTP/navitia-docker-compose/blob/master/kirin/docker-compose_kirin.yml):
-      by default: `KIRIN_DB = 'dbname=kirin user=navitia password=navitia host=localhost port=9494'`
+      by default:\
+      `KIRIN_DB = 'dbname=kirin user=navitia password=navitia host=localhost port=9494'`
 
 * Launch tests: `py.test artemis/tests`
     - If you don't want to call `cities`, add `--skip_cities`
     - If the data has already been binarized, add `--skip_bina`
     - If you want to show prints, you can also add this argument `-s`
-    - Of course, every pytest invocation arguments can also be used on this command.
-      *Ex: if you want to run a specific test (or a tests class for a coverage)*`-k <tests_to_run>`
+    - Of course, every pytest invocation arguments can also be used on this command.\
+    *Ex: if you want to run a specific test (or a tests class for a coverage)*`-k <tests_to_run>`
