@@ -564,28 +564,12 @@ class ArtemisTestFixture(CommonTestFixture):
             if six.PY3:
                 from artemis import pytest_report_makers
 
-                journeys_report_message = pytest_report_makers.journeys_diff(
-                    filtered_reference, filtered_response
-                )
-
-                places_report_message = pytest_report_makers.places_diff(
-                    filtered_reference, filtered_response
-                )
-
-                geo_status_report_message = pytest_report_makers.geo_status_diff(
+                req_diff_report_message = pytest_report_makers.request_diffs(
                     filtered_reference, filtered_response
                 )
 
                 pytest_report_makers.add_to_report(
-                    self.get_test_name(), http_query, journeys_report_message
-                )
-
-                pytest_report_makers.add_to_report(
-                    self.get_test_name(), http_query, places_report_message
-                )
-
-                pytest_report_makers.add_to_report(
-                    self.get_test_name(), http_query, geo_status_report_message
+                    self.get_test_name(), http_query, req_diff_report_message
                 )
 
             # Print difference in console

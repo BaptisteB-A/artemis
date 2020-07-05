@@ -5,69 +5,34 @@ from deepdiff import DeepDiff
 import urllib.parse
 
 
-def journeys_diff(ref_dict, resp_dict):
-    ref_journeys = ref_dict.get("journeys", [])
-    resp_journeys = resp_dict.get("journeys", [])
-    diff = DeepDiff(ref_journeys, resp_journeys)
-    message = (
-        "<ul><li>new journeys nb: {}\n</li>"
-        "<li>discarded journeys nb: {}\n</li>"
-        "<li>updated journeys nb: {}\n</li></ul>"
-        "<details open><summary>CLICK ME</summary><p>\n\n"
-        "<pre><code class='language-json\n'>"
-        "{}\n"
-        "</p></details>\n</code></pre>"
-    ).format(
-        len(diff.get("dictionary_item_added", [])),
-        len(diff.get("dictionary_item_removed", [])),
-        len(diff.get("values_changed", [])),
-        json.dumps(diff, indent=2),
-    )
-    return message
-
-
-def places_diff(ref_dict, resp_dict):
-    ref_places = ref_dict.get("places", [])
-    resp_places = resp_dict.get("places", [])
-    diff = DeepDiff(ref_places, resp_places)
-    message = (
-        "<ul><li>new places nb: {}\n</li>"
-        "<li>discarded places nb: {}\n</li>"
-        "<li>updated places nb: {}\n</li></ul>"
-        "<details open><summary>CLICK ME</summary><p>\n\n"
-        "<pre><code class='language-json\n'>"
-        "{}\n"
-        "</p></details>\n</code></pre>"
-    ).format(
-        len(diff.get("dictionary_item_added", [])),
-        len(diff.get("iterable_item_removed", [])),
-        len(diff.get("values_changed", [])),
-        json.dumps(diff, indent=2),
-    )
-    return message
-
-
-def geo_status_diff(ref_dict, resp_dict):
-    ref_geo_status = ref_dict.get("geo_status", [])
-    resp_geo_status = resp_dict.get("geo_status", [])
-    diff = DeepDiff(ref_geo_status, resp_geo_status)
-    print(ref_geo_status)
-    print(resp_geo_status)
-
-    message = (
-        "<ul><li>new geo_status nb: {}\n</li>"
-        "<li>discarded geo_status nb: {}\n</li>"
-        "<li>updated geo_status nb: {}\n</li></ul>"
-        "<details open><summary>CLICK ME</summary><p>\n\n"
-        "<pre><code class='language-json\n'>"
-        "{}\n"
-        "</p></details>\n</code></pre>"
-    ).format(
-        len(diff.get("dictionary_item_added", [])),
-        len(diff.get("dictionary_item_removed", [])),
-        len(diff.get("values_changed", [])),
-        json.dumps(diff, indent=2),
-    )
+def request_diffs(ref_dict, resp_dict):
+    requests = ["journeys", "places", "geo_status"]
+    message = ""
+    for req in requests:
+        ref_req = ref_dict.get(req, [])
+        resp_req = resp_dict.get(req, [])
+        diff = DeepDiff(ref_req, resp_req)
+        values_changed = diff.get("values_changed", [])
+        updated_req_nb = set()
+        for root in values_changed:
+            req_id = root.split("]")[0]
+            updated_req_nb.add(req_id)
+        req_message = (
+            "<u>" + req + " :</u>"
+            "<ul><li>new " + req + " nb: {}\n</li>"
+            "<li>discarded " + req + " nb: {}\n</li>"
+            "<li>updated " + req + " nb: {}\n</li></ul>"
+            "<details open><summary>CLICK ME</summary><p>\n\n"
+            "<pre><code class='language-json\n'>"
+            "{}\n"
+            "</p></details>\n</code></pre>"
+        ).format(
+            len(diff.get("iterable_item_added", [])),
+            len(diff.get("iterable_item_removed", [])),
+            len(updated_req_nb),
+            json.dumps(diff, indent=2),
+        )
+        message = "\n".join([message, req_message])
     return message
 
 
