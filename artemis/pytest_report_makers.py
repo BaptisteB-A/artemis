@@ -5,35 +5,61 @@ from deepdiff import DeepDiff
 import urllib.parse
 
 
-def request_diffs(ref_dict, resp_dict):
-    requests = ["journeys", "places", "geo_status"]
-    message = ""
-    for req in requests:
-        ref_req = ref_dict.get(req, [])
-        resp_req = resp_dict.get(req, [])
-        diff = DeepDiff(ref_req, resp_req)
+def count_roots(values_changed):
+    """
+    Json diff example :
+    {
+        "values_changed": {
+            "root[1]['quality']": {
+                "new_value": -10,
+                "old_value": 0
+            },
+            "root[2]['name']": {
+                "new_value": "rue Jean Jaur\u00e8s (Quimper)",
+                "old_value": "rue Jean Jaur\u00e8s (Brest)"
+            },
+            "root[2]['id']": {
+                "new_value": "-4.099163864088552;47.99357755862109",
+                "old_value": "-4.476088128765972;48.39663769196877"
+            },
+            ...
+        }
+    }
+    Counts the number of unique roots. In this example, two items have changed : root[1] and root[2]
+    """
+    updated_roots = set()
+    for root in values_changed:
+        root_id = root.split("]")[0]
+        updated_roots.add(root_id)
+    return len(updated_roots)
+
+
+def request_diff(ref_dict, resp_dict):
+    req_type = ["journeys", "places", "geo_status"]
+    report_message = ""
+    for req in req_type:
+        ref = ref_dict.get(req, [])
+        resp = resp_dict.get(req, [])
+        diff = DeepDiff(ref, resp)
         values_changed = diff.get("values_changed", [])
-        updated_req_nb = set()
-        for root in values_changed:
-            req_id = root.split("]")[0]
-            updated_req_nb.add(req_id)
-        req_message = (
-            "<u>" + req + " :</u>"
-            "<ul><li>new " + req + " nb: {}\n</li>"
-            "<li>discarded " + req + " nb: {}\n</li>"
-            "<li>updated " + req + " nb: {}\n</li></ul>"
-            "<details open><summary>CLICK ME</summary><p>\n\n"
-            "<pre><code class='language-json\n'>"
-            "{}\n"
-            "</p></details>\n</code></pre>"
-        ).format(
-            len(diff.get("iterable_item_added", [])),
-            len(diff.get("iterable_item_removed", [])),
-            len(updated_req_nb),
-            json.dumps(diff, indent=2),
-        )
-        message = "\n".join([message, req_message])
-    return message
+        items_changed = count_roots(values_changed)
+        items_added = len(diff.get("iterable_item_added", []))
+        items_removed = len(diff.get("iterable_item_removed", []))
+        if items_added != 0 or items_removed != 0 or items_changed != 0:
+            message = (
+                "<u>" + req + " :</u>"
+                "<ul><li>new " + req + " nb: {}\n</li>"
+                "<li>discarded " + req + " nb: {}\n</li>"
+                "<li>updated " + req + " nb: {}\n</li></ul>"
+                "<details open><summary>CLICK ME</summary><p>\n\n"
+                "<pre><code class='language-json\n'>"
+                "{}\n"
+                "</p></details>\n</code></pre>"
+            ).format(
+                items_added, items_removed, items_changed, json.dumps(diff, indent=2)
+            )
+            report_message = "\n".join([report_message, message])
+    return report_message
 
 
 def add_to_report(test_name, test_query, report_message):

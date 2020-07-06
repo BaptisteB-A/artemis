@@ -564,12 +564,12 @@ class ArtemisTestFixture(CommonTestFixture):
             if six.PY3:
                 from artemis import pytest_report_makers
 
-                req_diff_report_message = pytest_report_makers.request_diffs(
+                request_diff_report_message = pytest_report_makers.request_diff(
                     filtered_reference, filtered_response
                 )
 
                 pytest_report_makers.add_to_report(
-                    self.get_test_name(), http_query, req_diff_report_message
+                    self.get_test_name(), http_query, request_diff_report_message
                 )
 
             # Print difference in console
