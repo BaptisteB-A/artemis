@@ -34,17 +34,29 @@ def count_roots(values_changed):
     return len(updated_roots)
 
 
-def request_diff(ref_dict, resp_dict):
+def make_req_diff(ref_dict, resp_dict, req):
+    ref = ref_dict.get(req, [])
+    resp = resp_dict.get(req, [])
+    diff = DeepDiff(ref, resp)
+    return diff
+
+
+def count_modified_fields(diff):
+    values_changed = diff.get("values_changed", [])
+    items_added = len(diff.get("iterable_item_added", []))
+    items_removed = len(diff.get("iterable_item_removed", []))
+    items_changed = count_roots(values_changed)
+    return {"added": items_added, "removed": items_removed, "changed": items_changed}
+
+
+def response_diff(ref_dict, resp_dict):
     req_type = ["journeys", "places", "geo_status"]
     report_message = ""
     for req in req_type:
-        ref = ref_dict.get(req, [])
-        resp = resp_dict.get(req, [])
-        diff = DeepDiff(ref, resp)
-        values_changed = diff.get("values_changed", [])
-        items_changed = count_roots(values_changed)
-        items_added = len(diff.get("iterable_item_added", []))
-        items_removed = len(diff.get("iterable_item_removed", []))
+        diff = make_req_diff(ref_dict, resp_dict, req)
+        items_added = count_modified_fields(diff)["added"]
+        items_removed = count_modified_fields(diff)["removed"]
+        items_changed = count_modified_fields(diff)["changed"]
         if items_added != 0 or items_removed != 0 or items_changed != 0:
             message = (
                 "<u>" + req + " :</u>"
